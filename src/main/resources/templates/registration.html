@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <title>Автосервис</title>
+  <style>
+    p{
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>Автосервис</h1><hr>
+<h4>Регистрация</h4>
+  <form action="/registration" method="post">
+    Имя пользователя: <input type="text" name="name"><br><br>
+    Эл. почта: <input type="email" name="email"><br><br>
+    Пароль: <input type="password" name="password"><br><br>
+    <input type="submit" value="Зарегистрироваться"/>
+  </form>
+
+<div th:if="${param.error != null}">
+  <p th:text="${param.error}"style="color: red"></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+    <h2>Запись на ТО</h2>
+    <form action="/order/create" method="post">
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Номер телефона:</label>
+            <input type="tel" id="phone" name="phoneNumber" required>
+        </div>
+
+        <div class="form-group">
+            <label for="car-make">Марка машины:</label>
+            <input type="text" id="car-make" name="carModel" required>
+        </div>
+
+        <div class="form-group">
+            <label for="engine-size">Объем двигателя:</label>
+            <input type="number" id="engine-size" name="engineCapacity" required>
+        </div>
+
+        <div class="form-group">
+            <label for="additional-info">Дополнительная информация:</label>
+            <textarea id="additional-info" name="moreDetailed"></textarea>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Записаться на ТО">
+        </div>
+    </form>
+</div>
+
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
+
+
+</body>
+</html>

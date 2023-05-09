@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Автосервис</title>
+    <style>
+        body{
+            margin: 10px;
+        }
+        .login-btn{
+            margin: 10px;
+        }
+        .logout{
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+
+    <h1>Автосервис</h1><hr>
+<!--    <th:block th:if="${param.user} ">-->
+        <div class="logout">
+            <form action="/logout" method="post">
+                <input type="submit" value="Выйти"/>
+            </form>
+        </div>
+<!--    </th:block>-->
+<!--    <th:block th:else>-->
+        <div class="login-btn">
+            <form action="/login" method="post">
+                <input type="submit" value="Войти"/>
+            </form>
+        </div>
+<!--    </th:block>-->
+
+
+
+
+    <div class="card">
+        <form action="/order" method="get">
+            <h2>Записаться на ТО</h2>
+            <p>Запишитесь на ТО прямо сейчас!</p>
+            <input class="btn" type="submit" value="записаться">
+        </form>
+    </div>
+
+    <style>
+        .card {
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+
+
+</div>
+
+</body>
+</html>
