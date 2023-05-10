@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Присвоение ролей пользователю</title>
+</head>
+<body>
+<h1>Присвоение ролей пользователю: <span th:text="${user.name}"></span></h1>
+
+
+
+<form th:action="@{/admin/user/edit}" method="post">
+  <div th:each="role : ${roles}">
+    <input type="checkbox" name="selectedRoles" th:value="${role.name}"
+           th:checked="${user.roles.contains(role)}"/>
+    <label th:text="${role.name}"></label>
+  </div>
+  <input type="hidden" name="userId" th:value="${user.id}"/>
+  <button type="submit">Save</button>
+</form>
+
+
+
+
+</body>
+</html>

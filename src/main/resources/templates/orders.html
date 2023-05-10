@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список ТО клиента</title>
+    <style>
+        /* Стили для таблицы */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        /* Стили для контейнера */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding-top: 50px;
+        }
+
+        /* Стили для заголовка */
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="/orders" method="get">
+        <h1>Список записей ТО</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Номер телефона</th>
+                <th>Модель машины</th>
+                <th>Объем двигателя</th>
+                <th>Дополнительная информация</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Используем Thymeleaf для динамического отображения данных -->
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.name}"></td>
+                <td th:text="${order.phoneNumber}"></td>
+                <td th:text="${order.carModel}"></td>
+                <td th:text="${order.engineCapacity}"></td>
+                <td th:text="${order.moreDetailed}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>

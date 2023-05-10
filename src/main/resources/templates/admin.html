@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Автосервис</title>
+    <style>
+        .table {
+            font-size: 14px;
+        }
+
+        thead {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-right: 4px;
+        }
+
+        .badge-success {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .badge-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            color: #fff;
+            border-color: #0062cc;
+        }
+
+    </style>
+</head>
+<body>
+<h4>Панель администратора</h4>
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Почта</th>
+        <th scope="col">Активность</th>
+        <th scope="col">Роль</th>
+        <th scope="col">Бан</th>
+        <th>Редактирование</th>
+        <th scope="col">Записи на ТО</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.email}">Почта</td>
+        <td>
+            <span th:if="${user.active}" class="badge badge-success">Активный</span>
+            <span th:if="${!user.active}" class="badge badge-danger">Неактивный</span>
+        </td>
+        <td th:text="${user.roles}">Роль</td>
+        <td>
+            <form th:action="@{/admin/user/ban/{id}(id=${user.id})}" method="POST">
+                <input type="submit" value="Заблокировать">
+            </form>
+        </td>
+        <td><a th:href="@{/admin/user/edit/{id}(id=${user.id})}" class="btn btn-primary">Редактировать</a></td>
+        <td><a th:href="@{/admin/user/orders/{userid}(userid=${user.id})}" class="btn btn-primary">Записи на ТО</a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>

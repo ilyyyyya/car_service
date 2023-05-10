@@ -1,8 +1,6 @@
 package com.carService.product.service;
 
 import com.carService.product.repos.UserRepo;
-
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

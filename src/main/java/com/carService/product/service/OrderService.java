@@ -21,10 +21,9 @@ public class OrderService {
     @Autowired
     private final UserRepo userRepo;
 
-    public List<Order> listOrders(String name){
-        if(name != null) return orderRepo.findOrderByName(name);
-        return orderRepo.findAll();
-    }
+//    public List<Order> listOrders(){
+//        return orderRepo.findAll();
+//    }
 
     public void saveOrder(Principal principal, Order order){
         order.setUser(getUserByPrincipal(principal));
@@ -37,12 +36,13 @@ public class OrderService {
         return userRepo.findByEmail(principal.getName());
     }
 
+
     public void deleteOrder(Long id){
         orderRepo.deleteById(id);
     }
 
-    public Order getOrderById(Long id){
-        return orderRepo.findById(id).orElse(null);
-    }
 
+    public List<Order> getOrdersForUser(Long userId) {
+        return orderRepo.findByUserId(userId);
+    }
 }

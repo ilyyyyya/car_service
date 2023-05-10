@@ -13,6 +13,20 @@
         .logout{
             margin: 10px;
         }
+        .button1 {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
 
     </style>
 </head>
@@ -20,20 +34,52 @@
 <div>
 
     <h1>Автосервис</h1><hr>
-<!--    <th:block th:if="${param.user} ">-->
-        <div class="logout">
-            <form action="/logout" method="post">
-                <input type="submit" value="Выйти"/>
-            </form>
+
+    <div th:if="${username != null} ">
+        <h3><i>Логин пользователя: <span th:text="${username}"></span></i></h3>
+            <div class="logout">
+                <form action="/logout" method="post">
+                    <input type="submit" value="Выйти"/>
+                </form>
+            </div>
+        <div th:if="${#authentication.principal.isAdmin()}">
+            <a href="/admin" class="button1">Панель администратора</a>
         </div>
-<!--    </th:block>-->
-<!--    <th:block th:else>-->
+    </div>
+    <div th:if="${username == null}">
         <div class="login-btn">
             <form action="/login" method="post">
                 <input type="submit" value="Войти"/>
             </form>
         </div>
-<!--    </th:block>-->
+    </div>
+
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+    </style>
+
+    <form action="/orders" method="get">
+        <input class="button" type="submit" value="Заказы">
+
+    </form>
 
 
 
@@ -42,7 +88,7 @@
         <form action="/order" method="get">
             <h2>Записаться на ТО</h2>
             <p>Запишитесь на ТО прямо сейчас!</p>
-            <input class="btn" type="submit" value="записаться">
+            <input class="btn" type="submit" value="Записаться">
         </form>
     </div>
 

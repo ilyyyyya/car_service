@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "orders")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Order {
 
     @Id
@@ -31,4 +33,6 @@ public class Order {
     @JsonIgnore
     @JoinColumn
     private User user;
+
+
 }

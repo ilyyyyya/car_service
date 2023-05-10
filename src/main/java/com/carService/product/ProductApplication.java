@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.carService.product.repos")
+//@EnableJpaRepositories("com.carService.product.repos")
 @EnableWebSecurity
 public class ProductApplication {
 
