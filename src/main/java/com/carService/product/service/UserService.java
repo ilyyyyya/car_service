@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -20,6 +19,7 @@ public class UserService {
     @Autowired
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
+
 
     public boolean createUser(User user) {
         String email = user.getEmail();
@@ -58,18 +58,6 @@ public class UserService {
 
     }
 
-//    public void changeUserRoles(User user, Map<String, String> form) {
-//        Set<String> roles = Arrays.stream(Role.values())
-//                .map(Enum::name)
-//                .collect(Collectors.toSet());
-//        user.getRoles().removeIf(role -> true);
-//        for (String key : form.keySet()) {
-//            if (roles.contains(key)) {
-//                user.getRoles().add(Role.valueOf(key));
-//            }
-//        }
-//        userRepo.save(user);
-//    }
 
     public void changeUserRoles(User user, List<String> selectedRoles) {
         user.getRoles().clear();
@@ -79,10 +67,6 @@ public class UserService {
         }
         userRepo.save(user);
     }
-
-
-
-
 
 
 }

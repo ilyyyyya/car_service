@@ -34,5 +34,59 @@ public class Order {
     @JoinColumn
     private User user;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public String getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public void setEngineCapacity(String engineCapacity) {
+        this.engineCapacity = engineCapacity;
+    }
+
+    public String getMoreDetailed() {
+        return moreDetailed;
+    }
+
+    public void setMoreDetailed(String moreDetailed) {
+        this.moreDetailed = moreDetailed;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -21,9 +21,6 @@ public class OrderService {
     @Autowired
     private final UserRepo userRepo;
 
-//    public List<Order> listOrders(){
-//        return orderRepo.findAll();
-//    }
 
     public void saveOrder(Principal principal, Order order){
         order.setUser(getUserByPrincipal(principal));
