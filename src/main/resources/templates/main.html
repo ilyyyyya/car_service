@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -26,8 +26,6 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
-
     </style>
 </head>
 <body>
@@ -76,15 +74,64 @@
 
     </style>
 
+
+
     <form action="/orders" method="get">
         <input class="button" type="submit" value="Записи на ТО">
 
     </form>
 
+    <style>
+        .cart-icon {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+        }
+
+        .cart-icon a {
+            display: inline-block;
+            position: relative;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .cart-icon a:hover {
+            color: #fff;
+        }
+
+        .cart-icon i {
+            padding: 10px;
+            background-color: #337ab7;
+            border-radius: 50%;
+        }
+
+        .cart-icon .cart-count {
+            display: inline-block;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #f00;
+            color: #fff;
+            border-radius: 50%;
+        }
+
+    </style>
+
+    <div class="cart-icon" th:if="${#lists.isEmpty(cartItems) == false}">
+        <a th:href="@{/cart}">
+            <i class="fa fa-shopping-cart"></i>
+            <div class="cart-count" th:text="${#lists.size(cartItems)}"></div>
+        </a>
+    </div>
 
 
 
-    <div class="card">
+    <div class="card1">
         <form action="/order" method="get">
             <h2>Записаться на ТО</h2>
             <p>Запишитесь на ТО прямо сейчас!</p>
@@ -93,14 +140,14 @@
     </div>
 
     <style>
-        .card {
+
+        .card1 {
             background-color: #fff;
             border: 1px solid #e6e6e6;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             padding: 20px;
             max-width: 600px;
-            margin: 0 auto;
             text-align: center;
         }
 
@@ -129,9 +176,89 @@
         .btn:hover {
             background-color: #3e8e41;
         }
+
     </style>
 
+    <style>
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col-sm-4 {
+            flex-basis: calc(33.33333% - 30px);
+            margin: 15px;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .col-sm-4 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 15px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 0 10px 10px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .card {
+                margin-right: 0;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+
+    </style>
+    <form action="#" method="get">
+        <div class="container">
+            <h2>Автозапчасти</h2>
+            <p>Выберите нужную запчасть и добавьте ее в корзину.</p>
+            <div class="row">
+                <div th:each="part : ${autoParts}" class="col-sm-4">
+                    <div class="card">
+                        <h3 th:text="${part.name}"></h3>
+                        <p th:text="${part.description}"></p>
+                        <p>Цена: <span th:text="${part.price}"></span> рублей</p>
+                        <button type="submit" name="add-to-cart" th:value="${'part-' + part.id}">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>

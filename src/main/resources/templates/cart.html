@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Корзина</title>
+</head>
+<body>
+<h1>Корзина</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Название товара</th>
+    <th>Количество</th>
+    <th>Цена</th>
+    <th>Итого</th>
+    <th>Удалить</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${cartItems}">
+    <td th:text="${item.product.name}"></td>
+    <td th:text="${item.quantity}"></td>
+    <td th:text="${item.product.price}"></td>
+    <td th:text="${item.totalPrice}"></td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="3">Итого:</td>
+    <td th:text="${cart.totalPrice}"></td>
+    <td></td>
+  </tr>
+  </tfoot>
+</table>
+<a href="/">Продолжить покупки</a>
+</body>
+</html>

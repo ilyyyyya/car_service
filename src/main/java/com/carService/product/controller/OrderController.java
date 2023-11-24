@@ -60,11 +60,11 @@ public class OrderController {
 
         orderService.saveOrder(principal,order);
 
-//        String username = principal.getName();
-//        User user = userRepo.findByEmail(username);
-//        if (user == null) {
-//            return "redirect:/error";
-//        }
+        String username = principal.getName();
+        User user = userRepo.findByEmail(username);
+        if (user == null) {
+            return "redirect:/error";
+        }
 //        String subject = "Создание нового заказа";
 //        String text = "Уважаемый " + user.getName() + ",\n\n" +
 //                "Ваш заказ #" + order.getId() + " был успешно создан.";

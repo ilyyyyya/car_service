@@ -30,7 +30,8 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-test'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
-
+	implementation 'com.github.prominence:openweathermap-api:2.2.0'
+	implementation 'com.alibaba:fastjson:1.2.78'
 }
 
 tasks.named('test') {
