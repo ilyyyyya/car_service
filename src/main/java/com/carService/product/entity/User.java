@@ -32,8 +32,7 @@ public class User implements UserDetails{
     private Set<Role> roles = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Cart cart;
+
 
 
     public void setRoles(Set<Role> roles) {
