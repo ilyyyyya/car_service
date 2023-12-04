@@ -7,6 +7,7 @@ import com.carService.product.repos.UserRepo;
 import com.carService.product.service.EmailService;
 import com.carService.product.service.OrderService;
 import com.carService.product.service.UserService;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,20 +57,24 @@ public class OrderController {
 
 
     @PostMapping("/order/create")
-    public String createOrder(Order order, Principal principal) {
-
+    public String createOrder(Order order, Principal principal)  {
         orderService.saveOrder(principal,order);
 
         String username = principal.getName();
+
         User user = userRepo.findByEmail(username);
         if (user == null) {
             return "redirect:/error";
         }
-//        String subject = "Создание нового заказа";
-//        String text = "Уважаемый " + user.getName() + ",\n\n" +
-//                "Ваш заказ #" + order.getId() + " был успешно создан.";
-//
-//        emailService.emailSender(username, subject, text);
+        String to = user.getEmail();
+        String subject = "Новая запись на Техническое обслуживание";
+        String body = "Уважаемый " + user.getName() + ",\n\n" +
+                "Благодарим вас за вашу заявку. Заявка №" + order.getId() + " была успешна создана.\n\n\n\n" +
+                "Спасибо за выбор наших услуг!";
+
+
+
+        emailService.sendEmail(to, subject, body);
 
         return "redirect:/";
 

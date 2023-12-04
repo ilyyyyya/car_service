@@ -30,6 +30,7 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-test'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+//	implementation 'com.sun.mail:javax.mail:1.6.2'
 }
 
 tasks.named('test') {
